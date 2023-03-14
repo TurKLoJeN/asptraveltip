@@ -1,0 +1,28 @@
+﻿@using TatilSeyehat.Models.Siniflar
+@model List<Blog>
+<style>
+    renk {
+        color: #a2365a;
+        font-size: 15px;
+        margin: 15px 0;
+        font-weight: bold;
+    }
+</style>
+<div class="con-bot">
+    @foreach (var x in Model)
+    {
+        <div style="width: 29%; float: left;" class="left">
+            <div class="bot-left">
+                <img src="@x.BlogImage" alt="" width="280" height="150"/>
+            </div>
+            <div class="left-text">
+                <span class="doller" style="color:#a2365a;">@x.Baslik</span>
+                <br /><br />
+                <h1>@x.Tarih.ToString("dd.MM.yyyy")</h1>
+                <p>@x.Aciklama.Substring(0, 80)</p>
+                <p><a href="/Blog/BlogDetay/@x.ID"><span class="read">Devamını Oku >></span></a></p>
+            </div>
+        </div>
+    }
+    <div class="clear"></div>
+</div>

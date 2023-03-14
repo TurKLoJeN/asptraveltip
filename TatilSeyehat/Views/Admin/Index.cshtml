@@ -1,0 +1,40 @@
+﻿@using TatilSeyehat.Models.Siniflar
+@model List<Blog>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
+
+<h2>Blog Listesi</h2>
+
+<a href="/Admin/YeniBlog/" class="btn btn-primary">Yeni blog</a>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Resim</th>
+        <th>BAŞLIK</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.ID</td>
+            <td><img src="@x.BlogImage" width="150" height="100" /></td>
+            <td>@x.Baslik</td>
+            <td><a href="/Admin/BlogSil/@x.ID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Admin/BlogGetir/@x.ID" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="#" class="btn btn-dark">Detaylar</a></td>
+        </tr>
+    }
+</table>
